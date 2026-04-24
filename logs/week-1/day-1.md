@@ -37,21 +37,21 @@ Today's biggest "Aha!" moment was internalizing the **Cell Model**.
 | **Concurrency** | Sequential (Nonce-based) | Parallel (UTXO-based) |
 | **Computation** | On-chain (EVM) | Off-chain (Verification on-chain) |
 
-### Why this matters for AI Agents
-In an Account-based world, an agent is restricted by its `nonce`. It can only do one thing at a time. In CKB's **Cell-oriented** world:
-1. **Granularity:** An agent can own 1,000 different cells, representing 1,000 different sub-tasks or micro-payments.
-2. **Parallelism:** The agent can sign and broadcast 1,000 transactions simultaneously without them blocking each other.
-3. **Data Residency:** We don't just store "balances." We store *data* inside the cells. This means an agent's memory can live directly in a cell it owns.
+### Why this matters for Scalability & Ownership
+In an Account-based world, you are restricted by a sequential `nonce`. In CKB's **Cell-oriented** world:
+1. **Granularity:** State is fragmented into independent cells, allowing for highly specific data management.
+2. **Parallelism:** Transactions can be processed in parallel because they reference independent cells rather than a shared global state.
+3. **True Ownership:** Data resides directly in the cells you own, not in a central contract's storage.
 
 ---
 
 ##  First Transaction: Transferring CKB
 
-*In progress: Verifying the local RPC connection and performing the first transfer of 100 CKB between dev accounts.*
+*Successfully verified the local RPC connection and performed the first transfer of 100 CKB between dev accounts.*
 
 ---
 
 ##  Reflection for Day 1
-The shift to PoW + UTXO feels like moving from a shared database (Ethereum) to a fleet of independent, programmable safety deposit boxes (CKB). For autonomous agents that need to act fast and own their own data, the Cell model feels like the "correct" architecture.
+The shift to PoW + UTXO feels like moving from a shared database (Ethereum) to a fleet of independent, programmable safety deposit boxes (CKB). It provides a level of control and scalability that is essential for complex decentralized applications.
 
 **Next Step:** Mastering the `Script` logic—how to actually lock and unlock these boxes.
