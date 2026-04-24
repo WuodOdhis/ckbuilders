@@ -10,10 +10,10 @@ The focus of Week 1 is setting up the development environment and transitioning 
 
 ## Daily Breakdown
 - [x] **Day 1:** Environment setup and Cell Model fundamentals.
-- [ ] **Day 2:** Script basics (Lock & Type scripts).
+- [x] **Day 2:** CKB Token Transfer Boilerplate (Lumos SDK).
 - [ ] **Day 3:** Building with Lumos (JS/TS SDK).
 - [ ] **Day 4:** Data storage in cells.
 - [ ] **Day 5:** First mini-agent prototype.
 
-## Obstacles
-- Initial setup errors regarding `ckb init` and port conflicts. Resolved by better workspace management.
+
+

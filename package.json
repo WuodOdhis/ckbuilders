@@ -1,0 +1,12 @@
+{
+  "name": "ckbuilders-log",
+  "version": "1.0.0",
+  "description": "A deep-dive exploration into the Nervos Common Knowledge Base (CKB). This repository tracks my journey through the CKBuilders program, focusing on the Cell Model, PoW Security, and UTXO Scalability.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
