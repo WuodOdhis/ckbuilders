@@ -1,4 +1,4 @@
-# Day 2: The Art of the Transfer — Lumos & Transaction Construction
+# Day 2: The Art of the Transfer 
 
 **Date:** April 24, 2026  
 **Phase:** 1 (Setup & Fundamentals)  
