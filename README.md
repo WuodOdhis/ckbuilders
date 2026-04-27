@@ -17,7 +17,7 @@ A deep-dive exploration into building autonomous, AI-agent-driven systems on the
 ##  Environment
 - **Node:** v20.x
 - **CLI:** OffCKB
-- **Framework:** Lumos (JS/TS SDK for CKB)
+- 
 
 ---
 
