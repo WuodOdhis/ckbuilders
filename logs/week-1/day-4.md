@@ -74,3 +74,11 @@ We have covered the core pillars of CKB:
 Understanding that "Ownership" is just a script was the final piece of the puzzle. It means I can build multi-sig, social recovery, or time-locked accounts by simply changing the Lock Script, without waiting for protocol upgrades.
 
 **Next Step:** Moving into **Week 2** to start building practical applications with **UDTs (User Defined Tokens)** and **Spores**.
+
+---
+
+## Project Screenshots
+Here is a screenshot of the basic dApp interface we set up for this project, verifying the local development environment:
+
+![CKB Simple dApp Screenshot](screenshots/day-4-app.png)
+

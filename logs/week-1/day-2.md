@@ -11,13 +11,13 @@ Successfully executed a transfer of **99 CKB** using a custom dApp interface run
 ###  Transfer Interface
 The dApp successfully connected to the local node, identified the available capacity (42M CKB), and constructed the transaction.
 
-![CKB Transfer UI](file:///home/badman/Projects/ckbuilders-log/logs/week-1/screenshots/day-2-transfer-ui.png)
+![CKB Transfer UI](screenshots/day-2-transfer-ui.png)
 
 ###  Terminal Confirmation
 The transaction was broadcast via the `simple-transfer` boilerplate, confirmed with hash:  
 `0x6ad1ca2eb65347e494692e95d89cbbd3d5a448df073faae90b879b653924a11d`
 
-![CKB Terminal Output](file:///home/badman/Projects/ckbuilders-log/logs/week-1/screenshots/day-2-terminal.png)
+![CKB Terminal Output](screenshots/day-2-terminal.png)
 
 ---
 

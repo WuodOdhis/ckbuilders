@@ -17,6 +17,14 @@ Instead of writing raw transaction hexes manually as I did in Week 1, I am now l
 2. **Reading On-Chain State:** Implemented a signer capable of fetching the active Testnet Address and querying the live available CKB balance directly from the network.
 3. **Environment Setup:** Configured a frontend environment robust enough to handle CKB's cryptographic requirements (e.g., configuring `vite-plugin-node-polyfills` to ensure compatibility).
 
+### CKB Simple dApp — Connected via JoyID Passkey
+
+![CKB Simple dApp connected via JoyID](screenshots/joyid-dapp.png)
+
+### JoyID Wallet Dashboard
+
+![JoyID Wallet Dashboard](screenshots/joyid-wallet.png)
+
 ---
 
 ## Why This Matters
@@ -34,3 +42,15 @@ With the wallet connection working smoothly:
 1. Deep-dive into how the `ccc` library constructs Lock Scripts behind the scenes.
 2. Extend the frontend to support signing a simple CKB transfer.
 3. Prepare the infrastructure for deploying my first UDT on the Testnet.
+
+---
+
+## xUDT Application Setup Preview
+
+As part of preparing for User Defined Tokens (UDTs), I've initialized the xUDT DApp template:
+
+![xUDT Terminal Setup](screenshots/xudt-terminal.png)
+
+And here is the interface for issuing and viewing custom tokens via the xUDT scripts:
+
+![xUDT DApp Interface](screenshots/xudt-dapp.png)

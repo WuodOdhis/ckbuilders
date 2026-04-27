@@ -21,4 +21,27 @@ A deep-dive exploration into building autonomous, AI-agent-driven systems on the
 
 ---
 
+##  Project Showcase
+
+### Week 1: Foundations & First Transactions
+
+**CKB Academy — Theoretical Foundations**
+![CKB Academy](logs/week-1/screenshots/ckb-academy.png)
+
+**GitHub Repository Setup**
+![GitHub Repo](logs/week-1/screenshots/github-repo-setup.png)
+
+**First CKB Transfer (99 CKB via Simple Transfer dApp)**
+![CKB Transfer](logs/week-1/screenshots/day-2-transfer-ui.png)
+
+### Week 2: Practical Application & Tooling
+
+**CKB Simple dApp — Connected via JoyID Passkey**
+![JoyID dApp](logs/week-2/screenshots/joyid-dapp.png)
+
+**xUDT Token Issuance Interface**
+![xUDT DApp](logs/week-2/screenshots/xudt-dapp.png)
+
+---
+
 > "The Cell Model isn't just a way to store state; it's a way to architect autonomy." — Day 1 Reflection.

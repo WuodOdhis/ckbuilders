@@ -26,6 +26,14 @@ offckb accounts
 
 ---
 
+##  Learning from CKB Academy
+
+Completed the CKB basic theoretical knowledge course, covering cells, lock scripts, type scripts, and transaction construction:
+
+![CKB Academy Course Progress](screenshots/ckb-academy.png)
+
+---
+
 ##  Conceptual Shift: Cells vs. Accounts
 
 Today's biggest "Aha!" moment was internalizing the **Cell Model**.
@@ -48,6 +56,14 @@ In an Account-based world, you are restricted by a sequential `nonce`. In CKB's 
 ##  First Transaction: Transferring CKB
 
 *Successfully verified the local RPC connection and performed the first transfer of 100 CKB between dev accounts.*
+
+---
+
+##  GitHub Repository Setup
+
+The project repository was initialized on GitHub to track the entire CKBuilders journey:
+
+![GitHub Repo Setup](screenshots/github-repo-setup.png)
 
 ---
 
