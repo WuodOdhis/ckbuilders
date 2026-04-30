@@ -31,3 +31,27 @@ The `outputs_data` array returned `0x4275696c64696e67206f6e20434b42204465766e657
 
 **Querying the local RPC to verify the `outputs_data` is committed:**
 ![RPC Verification](screenshots/day-2-rpc.png)
+
+---
+
+## Part 2: Minting a Fungible Token (xUDT)
+
+### Objective
+Learn how to issue an Extensible User Defined Token (xUDT) on the CKB devnet using the CCC SDK.
+
+### Progress & Technical Learnings
+We successfully built a token issuance script from scratch with the following concepts applied:
+1.  **Token Data Structure:** We learned that a token balance is simply a 128-bit unsigned integer stored in the `data` field in little-endian format (`ccc.numLeToBytes`). We minted 1,000,000 tokens.
+2.  **Type Script Enforcement:** To prevent arbitrary minting, we attached the `xUDT` Type Script to our new cell. 
+3.  **Owner Definition:** The `args` for the xUDT script were defined as our own Lock Script Hash, making us the exclusive owner and minter of the token.
+4.  **Resolving Dependencies:** Just like the Secp256k1 script, the `xUDT` script dependency had to be injected into the transaction's `cellDeps` so the local devnet node could verify the token rules.
+
+### Proof of Execution
+The script successfully assembled the dependencies, added the exact capacity needed for the data bytes, and broadcast the transaction.
+
+```text
+Issuer Address: ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqvwg2cen8extgq8s5puft8vf40px3f599cytcyd8
+Minting 1000000 tokens...
+✅ Success! Token Minted!
+Transaction Hash: 0x6fb08580afb50f4b1a4d25f93ac5e00fca3582907ef48572d689064c375940ed
+```
