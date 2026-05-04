@@ -7,13 +7,13 @@
 
 ## Executive Summary
 
-Week 2 marked the transition from conceptual understanding to live on-chain execution. Every exercise required writing real TypeScript code, constructing raw transactions, and broadcasting them to a local devnet. The week covered four major milestones: storing arbitrary data on-chain, issuing a Fungible Token (xUDT), understanding CKB's unique state-rent model, and studying the Fiber Network — CKB's Layer 2 payment channel infrastructure.
+Week 2 marked the transition from conceptual understanding to live on-chain execution. Every exercise required writing real TypeScript code, constructing raw transactions, and broadcasting them to a local devnet. The week covered four major milestones: storing arbitrary data on-chain, issuing a Fungible Token (xUDT), understanding CKB's unique state-rent model, and studying the Fiber Network - CKB's Layer 2 payment channel infrastructure.
 
 ---
 
 ## Daily Breakdown
 
-### Day 1 — JoyID Wallet Integration & SDK Setup
+### Day 1 - JoyID Wallet Integration & SDK Setup
 
 **Objective:** Connect a live wallet to the project and establish the CCC SDK as the primary development toolkit.
 
@@ -25,13 +25,13 @@ Key setup: The `ccc.Provider` component was wrapped around the entire applicatio
 
 ---
 
-### Day 2 — Storing Data on Cells & Minting a Fungible Token (xUDT)
+### Day 2 - Storing Data on Cells & Minting a Fungible Token (xUDT)
 
 **Objective:** Construct raw transactions that store data and mint tokens on the local devnet.
 
 #### Part 1: Storing Arbitrary Data
 
-The first practical exercise was writing a message — `"Building on CKB Devnet from scratch!"` — directly into the `outputsData` field of a new cell on-chain.
+The first practical exercise was writing a message - `"Building on CKB Devnet from scratch!"` - directly into the `outputsData` field of a new cell on-chain.
 
 The critical technical challenge was **capacity calculation**. CKB enforces that every cell's `capacity` must exactly cover the bytes it occupies:
 
@@ -68,17 +68,17 @@ const ownerLockHash = ccc.hashCkb(ccc.Script.encode(addressObj.script));
 
 **Token Minting Transaction Hash:** `0x6fb08580afb50f4b1a4d25f93ac5e00fca3582907ef48572d689064c375940ed`
 
-**Key Debugging Discovery:** The CCC `ClientPublicTestnet` hardcodes testnet system script outpoints. On a fresh `offckb` devnet, these outpoints are different. This required cloning and patching the scripts configuration before constructing any transactions — a non-obvious but critical devnet gotcha.
+**Key Debugging Discovery:** The CCC `ClientPublicTestnet` hardcodes testnet system script outpoints. On a fresh `offckb` devnet, these outpoints are different. This required cloning and patching the scripts configuration before constructing any transactions- a non-obvious but critical devnet gotcha.
 
 ---
 
-### Day 3 — State Architecture Theory: CKB as Real Estate & The Spore Protocol
+### Day 3 - State Architecture Theory: CKB as Real Estate & The Spore Protocol
 
 **Objective:** Understand CKB's state rent model and how it powers self-sustaining asset transfers.
 
 #### The State Bloat Problem
 
-On Ethereum, every deployed contract forces the entire network to store its ever-growing state table permanently and for free. This is "State Bloat" — a long-term threat to decentralization because it raises the hardware requirements to run a node.
+On Ethereum, every deployed contract forces the entire network to store its ever-growing state table permanently and for free. This is "State Bloat" - a long-term threat to decentralization because it raises the hardware requirements to run a node.
 
 #### CKB's Solution: 1 CKB = 1 Byte
 
@@ -94,13 +94,13 @@ When transferring a Spore NFT, the sender can shave a microscopic amount of capa
 
 ---
 
-### Day 4 — Fiber Network: CKB's Layer 2 Payment Architecture
+### Day 4 - Fiber Network: CKB's Layer 2 Payment Architecture
 
 **Objective:** Study how the Fiber Network extends CKB's capabilities to enable instant, high-throughput micro-payments.
 
 #### What is the Fiber Network?
 
-The Fiber Network is CKB's **Layer 2 payment channel network**, conceptually similar to Bitcoin's Lightning Network but built with CKB's unique script programmability. It enables two parties to open a payment channel by locking funds in a multi-sig cell on-chain, then transacting off-chain at unlimited speed — only settling to Layer 1 when the channel is closed.
+The Fiber Network is CKB's **Layer 2 payment channel network**, conceptually similar to Bitcoin's Lightning Network but built with CKB's unique script programmability. It enables two parties to open a payment channel by locking funds in a multi-sig cell on-chain, then transacting off-chain at unlimited speed - only settling to Layer 1 when the channel is closed.
 
 #### How It Works
 
@@ -114,7 +114,7 @@ The Fiber Network is CKB's **Layer 2 payment channel network**, conceptually sim
 
 #### Why CKB's Script Model Makes Fiber More Powerful
 
-On Bitcoin, HTLC logic is embedded in Bitcoin Script, which is limited. On CKB, the HTLC is a **Type Script** — a full RISC-V program. This means:
+On Bitcoin, HTLC logic is embedded in Bitcoin Script, which is limited. On CKB, the HTLC is a **Type Script** - a full RISC-V program. This means:
 - **Cross-asset channels:** A single Fiber channel can carry CKB, xUDT tokens, or Spore assets simultaneously.
 - **Programmable settlement:** Custom dispute resolution logic can be written in Rust and deployed without protocol changes.
 - **RGB++-compatible routing:** Assets bridged from Bitcoin via RGB++ can be routed through Fiber channels, connecting Bitcoin's liquidity to CKB's programmability.
@@ -132,7 +132,7 @@ This reduces the effective cost of micro-payments to near-zero and pushes throug
 
 ## Key Technical Takeaways for Week 2
 
-1. **CKB capacity is a deposit, not a fee.** Storing data costs CKB that you can reclaim — this changes how you think about on-chain state entirely.
+1. **CKB capacity is a deposit, not a fee.** Storing data costs CKB that you can reclaim - this changes how you think about on-chain state entirely.
 2. **The xUDT Type Script is the sole enforcer** of your token's minting and transfer rules. The owner's Lock Script Hash in the `args` field is your mint key.
 3. **Devnet and Testnet are not the same environment** for CCC. System script outpoints must be manually patched when working locally.
 4. **The Fiber Network extends CKB's programmability to Layer 2**, enabling cross-asset routing and instant settlement that Bitcoin's Lightning Network cannot support natively.
@@ -141,8 +141,8 @@ This reduces the effective cost of micro-payments to near-zero and pushes throug
 
 ## Concepts Documented This Week
 
-- `concepts/xudt.md` — xUDT token mechanics and the Type Script enforcement model
-- `concepts/fiber-network.md` — Fiber Network architecture, HTLC design, and the payment gateway pattern
+- `concepts/xudt.md` - xUDT token mechanics and the Type Script enforcement model
+- `concepts/fiber-network.md` - Fiber Network architecture, HTLC design, and the payment gateway pattern
 
 ---
 
