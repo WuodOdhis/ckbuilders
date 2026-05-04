@@ -43,7 +43,7 @@ We constructed a raw CKB token transfer boilerplate. This exercise forced a prac
 - Specifying **Output Cells** (new cells to create)
 - Attaching a **Witness** (the cryptographic proof of authorization)
 
-The key realization: CKB transactions do not "move" tokens. They **destroy** old cells and **create** new ones. This is not just a technical distinction — it means state on CKB is never mutated, only transformed.
+The key realization: CKB transactions do not "move" tokens. They **destroy** old cells and **create** new ones. This is not just a technical distinction - it means state on CKB is never mutated, only transformed.
 
 **Completed:** Full CKB transfer boilerplate implemented and verified on the local devnet.
 
@@ -60,21 +60,21 @@ Studied and compared the four major blockchain VMs:
 | EVM | Ethereum | Custom 256-bit stack | Requires hard forks for new crypto |
 | WASM | Polkadot/Near | Web Assembly | External standard dependency |
 | SVM | Solana | eBPF (modified) | Optimized for throughput, limited flexibility |
-| **CKB-VM** | **Nervos** | **RISC-V** | **None — it's a hardware standard** |
+| **CKB-VM** | **Nervos** | **RISC-V** | **None, it's a hardware standard** |
 
-**Key Insight:** Because RISC-V is an open hardware instruction set (not a blockchain-specific design), any cryptographic library that compiles to RISC-V can be deployed as a CKB script without a protocol upgrade. This means CKB can support post-quantum cryptography, new ZK-proof systems, or any future standard by simply deploying a new script — no hard fork required.
+**Key Insight:** Because RISC-V is an open hardware instruction set (not a blockchain-specific design), any cryptographic library that compiles to RISC-V can be deployed as a CKB script without a protocol upgrade. This means CKB can support post-quantum cryptography, new ZK-proof systems, or any future standard by simply deploying a new script - no hard fork required.
 
 **Completed:** Full comparative analysis documented. Understood why "Bring Your Own Crypto" is a superpower.
 
 ---
 
-### Day 4 — Lock Scripts & Type Scripts
+### Day 4 - Lock Scripts & Type Scripts
 
 **Objective:** Understand the programmable logic layer of the Cell Model.
 
 Every cell in CKB has two optional logic fields that define its rules:
 
-**Lock Script (Security Layer):** Answers the question *"Who is authorized to spend this cell?"* It runs when a cell is consumed as an input. The standard lock (`Secp256k1Blake160`) checks for a valid ECDSA signature. But this is completely programmable — you can build multi-sig, time-locked, or social-recovery locks.
+**Lock Script (Security Layer):** Answers the question *"Who is authorized to spend this cell?"* It runs when a cell is consumed as an input. The standard lock (`Secp256k1Blake160`) checks for a valid ECDSA signature. But this is completely programmable - you can build multi-sig, time-locked, or social-recovery locks.
 
 **Type Script (Constraint Layer):** Answers the question *"Are the rules of this asset being followed?"* It runs on both the input and output cells. This is how token minting rules, NFT uniqueness, and DAO governance are enforced without a central contract.
 
@@ -87,7 +87,7 @@ const myLockScript = {
 };
 ```
 
-**Key Insight:** "Ownership" in CKB is not a database record — it is a *program*. You can upgrade your security model without touching the chain.
+**Key Insight:** "Ownership" in CKB is not a database record - it is a *program*. You can upgrade your security model without touching the chain.
 
 **Completed:** Full script anatomy documented. Set up the `day-4-asset-factory` React project to prepare for Week 2 frontend development.
 
@@ -95,7 +95,7 @@ const myLockScript = {
 
 ## Key Technical Takeaways
 
-1. **The Cell Model is not just Bitcoin's UTXO** — it is a fully programmable UTXO with separate security and constraint layers.
+1. **The Cell Model is not just Bitcoin's UTXO** - it is a fully programmable UTXO with separate security and constraint layers.
 2. **RISC-V is a long-term bet on hardware standardization**, not a blockchain-specific gimmick.
 3. **Every transaction is a state transformation**, not a state mutation. Old cells are destroyed; new cells are created.
 4. **Ownership is a script.** This means the rules of who can access your assets are programmable, upgradable, and composable.
