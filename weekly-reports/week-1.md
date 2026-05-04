@@ -13,11 +13,11 @@ Week 1 was entirely foundational. The goal was not to build applications, but to
 
 ## Daily Breakdown
 
-### Day 1 — Environment Setup & The Cell Model
+### Day 1 - Environment Setup & The Cell Model
 
 **Objective:** Spin up a local devnet and internalize the core state model.
 
-The first milestone was getting `offckb` — CKB's local developer toolchain — running and configured. Unlike Ethereum's Hardhat or Foundry, `offckb` initializes a fully functional Proof-of-Work node locally, which means blocks are actually mined and transactions must be genuinely verified.
+The first milestone was getting `offckb` , CKB's local developer toolchain , running and configured. Unlike Ethereum's Hardhat or Foundry, `offckb` initializes a fully functional Proof-of-Work node locally, which means blocks are actually mined and transactions must be genuinely verified.
 
 The core conceptual shift was understanding the **Cell Model** — CKB's version of Bitcoin's UTXO model but significantly more expressive:
 
@@ -34,11 +34,11 @@ The core conceptual shift was understanding the **Cell Model** — CKB's version
 
 ---
 
-### Day 2 — Transaction Construction & Token Transfers
+### Day 2 - Transaction Construction & Token Transfers
 
 **Objective:** Move beyond reading docs and write the first real transaction.
 
-Using the **Lumos SDK**, we constructed a raw CKB token transfer boilerplate. This exercise forced a practical understanding of how transactions are built on CKB:
+We constructed a raw CKB token transfer boilerplate. This exercise forced a practical understanding of how transactions are built on CKB:
 - Gathering **Input Cells** (cells to consume)
 - Specifying **Output Cells** (new cells to create)
 - Attaching a **Witness** (the cryptographic proof of authorization)
@@ -49,7 +49,7 @@ The key realization: CKB transactions do not "move" tokens. They **destroy** old
 
 ---
 
-### Day 3 — CKB-VM & The RISC-V Advantage
+### Day 3 - CKB-VM & The RISC-V Advantage
 
 **Objective:** Understand why the choice of Virtual Machine defines the long-term potential of the network.
 
