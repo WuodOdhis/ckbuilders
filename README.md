@@ -42,6 +42,30 @@ A deep-dive exploration into building autonomous, AI-agent-driven systems on the
 **xUDT Token Issuance Interface**
 ![xUDT DApp](logs/week-2/screenshots/xudt-dapp.png)
 
+### Week 3: Script Development & Advanced Logic
+
+**CKB Asset Factory — Premium Glassmorphism UI**
+![Asset Factory](logs/week-3/screenshots/asset-factory-ui.png)
+
+**Token Minting — Custom Script Experiment**
+![Token Minting](logs/week-3/screenshots/token-minting-success.png)
+
+**Always-Success Lock Script in Rust (RISC-V)**
+![Always Success Code](logs/week-3/screenshots/always-success-code.png)
+
+**Building RISC-V Binary & Downloading CKB Crates**
+![Cargo Build](logs/week-3/screenshots/cargo-ckb-crates.png)
+
+---
+
+## Next Implementation Goals
+
+Based on progress through the CKBuilders program, the following features are queued for implementation:
+
+1. **Deploy Custom Lock Script:** Take the compiled `always-success` binary and deploy it to the local devnet to create a custom address.
+2. **DOBs / Spores (NFTs):** Master the Spore Protocol to mint and manage Digital Objects and on-chain media using Cluster Cells.
+3. **Fiber Network Simulation:** Simulate a payment channel open/close flow on the local devnet using the concepts studied in Week 2.
+
 ---
 
 > "The Cell Model isn't just a way to store state; it's a way to architect autonomy." — Day 1 Reflection.
