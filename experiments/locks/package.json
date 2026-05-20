@@ -1,0 +1,21 @@
+{
+  "name": "locks-experiment",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "deploy.js",
+  "scripts": {
+    "deploy": "tsx deploy.ts",
+    "spend": "tsx spend.ts"
+  },
+  "dependencies": {
+    "@ckb-ccc/core": "^1.12.5",
+    "deploy": "^1.1.0",
+    "npm": "^11.14.1",
+    "run": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.19.2",
+    "typescript": "^6.0.3"
+  }
+}
