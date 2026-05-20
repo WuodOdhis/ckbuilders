@@ -1,3 +1,4 @@
 ckb-workspace/
 node_modules/
 *.log
+.env
