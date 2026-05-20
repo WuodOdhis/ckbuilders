@@ -1,6 +1,6 @@
 # agent-lock
 
-A CKB lock script that authorizes cell spending via **off-chain ECDSA signature verification** — enabling AI agents to cryptographically control on-chain assets through a Web2-to-Web3 bridge.
+A CKB lock script that authorizes cell spending via **off-chain ECDSA signature verification** - enabling AI agents to cryptographically control on-chain assets through a Web2-to-Web3 bridge.
 
 ## How It Works
 
@@ -39,7 +39,7 @@ If the hashes match → authorization granted. The cell can be spent without any
 
 | Code | Meaning |
 |------|---------|
-| `0` | Success — authorized agent signed this transaction |
+| `0` | Success - authorized agent signed this transaction |
 | `-1` | Error reading lock script |
 | `-2` | Invalid script args length (must be 20 bytes) |
 | `-3` | No witness provided |
@@ -49,7 +49,7 @@ If the hashes match → authorization granted. The cell can be spent without any
 | `-7` | Invalid signature format |
 | `-8` | Invalid recovery ID |
 | `-9` | Failed to recover public key |
-| `-10` | Unauthorized — recovered key does not match trusted hash |
+| `-10` | Unauthorized - recovered key does not match trusted hash |
 
 ## Building
 
@@ -80,9 +80,9 @@ Update the generated `code_hash` and `tx_hash` in `experiments/agent-lock/config
 
 ## Dependencies
 
-- `ckb-std` — CKB standard library for syscalls
-- `k256` — secp256k1 elliptic curve (no_std, ECDSA feature)
-- `blake2b-ref` — Blake2b hashing with CKB personalized config
+- `ckb-std` - CKB standard library for syscalls
+- `k256` - secp256k1 elliptic curve (no_std, ECDSA feature)
+- `blake2b-ref` - Blake2b hashing with CKB personalized config
 
 ## Atomic Instruction Note
 
