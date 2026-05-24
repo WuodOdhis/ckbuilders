@@ -37,9 +37,13 @@ The repo is live at `github.com/WuodOdhis/agentckblock` - tested on devnet, end-
 This is the first time in this program where I stopped following a tutorial and just built something I wanted to exist. The whole point of CKB's lock script model is that you're not limited to "ECDSA or nothing." You can write any auth logic you want. I proved that by making a lock that answers to a Telegram handle.
 
 ## Screenshots
-- [Always-Success Deployment](../logs/week-4/screenshots/always-success-deploy.png)
-- [RISC-V Disassembly](../logs/week-4/screenshots/riscv-disasm-atomic.png)
-- [Agent Lock ECDSA Flow](../logs/week-4/screenshots/agent-lock-ecdsa.png)
-- [Admin Dashboard](../logs/week-4/screenshots/admin-dashboard.png)
-- [User Claim Portal](../logs/week-4/screenshots/user-claim-portal.png)
-- [GitHub Repo](../logs/week-4/screenshots/github-repo.png)
+- [CKB Agent Lock Product Overview](../logs/week-4/screenshots/agent-lock-product-overview.png)
+- [Telegram Verification Bot](../logs/week-4/screenshots/telegram-verification-bot.png)
+- [Small Reward Claim Success](../logs/week-4/screenshots/small-reward-claim.png)
+- [Large Reward Claim Success](../logs/week-4/screenshots/large-reward-claim.png)
+- [Large Reward Agent Terminal Logs](../logs/week-4/screenshots/large-reward-agent-terminal.png)
+- [Reward Pool Pending State](../logs/week-4/screenshots/pending-reward-pool.png)
+- [Reward Pool After First Claim](../logs/week-4/screenshots/partial-claim-pool-status.png)
+- [Final User Claim Transaction](../logs/week-4/screenshots/final-user-claim-transaction.png)
+- [Final Pool Fully Claimed](../logs/week-4/screenshots/final-pool-claimed.png)
+- [Final Agent Terminal Logs](../logs/week-4/screenshots/final-agent-terminal.png)
