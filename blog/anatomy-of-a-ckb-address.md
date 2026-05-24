@@ -12,7 +12,7 @@ Whether you are using Bitcoin or Ethereum, your address (`0x71C...` or `bc1q...`
 
 It’s simple. It’s intuitive. And it is incredibly limiting.
 
-Because that address format is hardcoded into the base layer of the blockchain, you are stuck with whatever security rules the network designers chose ten years ago. If you want to use a different signature scheme—say, the WebAuthn standard used by Apple’s FaceID or your laptop's fingerprint scanner—you can’t just generate a normal address. You have to deploy a complex, expensive Smart Contract Wallet (like Ethereum's ERC-4337) and deal with an entirely different set of user experiences.
+Because that address format is hardcoded into the base layer of the blockchain, you are stuck with whatever security rules the network designers chose ten years ago. If you want to use a different signature scheme say, the WebAuthn standard used by Apple’s FaceID or your laptop's fingerprint scanner, you can’t just generate a normal address. You have to deploy a complex, expensive Smart Contract Wallet (like Ethereum's ERC-4337) and deal with an entirely different set of user experiences.
 
 When I started building on CKB, I generated an address that looked like `ckt1qzda0cr...`. I assumed it was just another coordinate. Another mailbox. 
 
@@ -36,7 +36,7 @@ When the CKB developer tools generate your address, they aren't just hashing you
 
 But asking a user to copy-paste a multi-line rulebook every time they want to get paid is terrible UX. 
 
-So, the CKB protocol takes that entire rulebook—the pointer to the program, the parameters, and your public key hash—compresses it, and encodes it into a single, error-resistant string of text. 
+So, the CKB protocol takes that entire rulebook, the pointer to the program, the parameters, and your public key hash, compresses it, and encodes it into a single, error-resistant string of text. 
 
 That compressed string is your address. 
 
