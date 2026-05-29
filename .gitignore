@@ -2,3 +2,6 @@ ckb-workspace/
 node_modules/
 *.log
 .env
+
+# Local mini-UDT devnet account config
+experiments/mini-udt/config.ts

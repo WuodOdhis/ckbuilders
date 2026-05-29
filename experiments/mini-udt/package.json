@@ -1,0 +1,16 @@
+{
+  "name": "mini-udt-experiment",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "mint": "tsx mint.ts"
+  },
+  "dependencies": {
+    "@ckb-ccc/core": "^0.0.12",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.10.2",
+    "typescript": "^5.4.5"
+  }
+}
