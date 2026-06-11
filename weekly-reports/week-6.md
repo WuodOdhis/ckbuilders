@@ -15,7 +15,7 @@ Through analyzing the Nervos Talk forums and developer circles, I identified thr
 3. **The "Collector" Problem for Open Transactions (OTX):** This became the focal point of the week's research.
 
 ## Deep Dive: CoBuild OTX & Intent Solvers
-Because CKB uses the Cell model, it suffers from **State Contention**—multiple users cannot interact with the same exact cell (like an AMM liquidity pool) simultaneously. 
+Because CKB uses the Cell model, it suffers from **State Contention** multiple users cannot interact with the same exact cell (like an AMM liquidity pool) simultaneously. 
 
 The ecosystem's native solution is **CoBuild Open Transactions (OTX)** and the **CellFabric** layer. 
 * Instead of rigid, balanced transactions, users sign *partial* transactions (Intents).
