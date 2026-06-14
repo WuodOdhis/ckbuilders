@@ -1,39 +1,65 @@
-# Week 7: Wiring the AMM to Devnet
+# Week 7: CellScript AMM Builder
 
-**Dates:** June 12 – June 14, 2026
+**Dates:** June 12 to June 15, 2026
 
-Week 6 ended with a research-phase epiphany: CellScript's ProofPlan makes contracts inspectable, and an AI builder could use that metadata to construct valid transactions automatically. The obvious next step was to prove it worked. I needed to take the `amm_pool.cell` contract ArthurZhang published, deploy it to my devnet, and wire a deterministic swap builder against a real pool.
+This week was about moving from CellScript research into a real local-devnet transaction path. The goal was to take ArthurZhang's `amm_pool.cell` example, deploy it, and build toward a working AMM flow.
 
-## Starting Over
+The week did not end with a swap. It ended with something more important: a clear understanding of what works, what was only a shortcut, and where the real blocker sits.
 
-The first surprise was that `amm_pool.cell` wasn't lost at all. I'd claimed in the week 6 report that it didn't exist in the cloned repo, but I'd simply been looking in the wrong directory. It was sitting in `cellscript/examples/` the whole time — a full implementation with `seed_pool`, `swap_a_for_b`, `add_liquidity`, and `remove_liquidity`. That changed the plan from "write the contract myself" to "understand and deploy what's already there."
+## From Idea To Devnet
 
-I compiled both `amm_pool.cell` and `token.cell` into ELF binaries using `cellc`, getting back the expected `.elf` files and their `.meta.json` manifests. The ProofPlan metadata confirmed the four actions and their `builder_assumptions`. Everything looked clean.
+I found the real `amm_pool.cell` example inside `cellscript/examples/`. It includes `seed_pool`, `swap_a_for_b`, `add_liquidity`, and `remove_liquidity`, so the task changed from writing my own AMM to learning how to build transactions for the existing CellScript contract.
 
-## Deploying to Devnet
+I compiled and deployed `amm_pool.elf`, `token.elf`, and `always_success.elf` on a local `offckb` devnet. I also built CCC scripts for deployment, funding, signing, and local test-cell creation.
 
-The 36KB `amm_pool.elf` deployed cleanly with `offckb deploy` — the tool handles everything from funding to signing for a single contract. The 14KB `token.elf` needed a different approach since `offckb deploy` only deploys one contract at a time. I wrote a custom CCC deploy script that constructs a deployment transaction with two output cells (one for the ELF code, one for the mint authority), signs with the devnet's secp256k1 key, and sends it.
+The public project repo for this work is:
 
-Both deployments succeeded. The real work should have been straightforward from there.
+`https://github.com/WuodOdhis/cellscript-swap-builder`
 
-## The Signing Debug Loop
+## Signing And Devnet Lessons
 
-What followed was roughly six hours of chasing my tail on what should have been a solved problem. I'd signed transactions before. But three separate bugs lined up in sequence, each one masking the next.
+Most of the early work was not AMM logic. It was basic CKB transaction plumbing.
 
-The first sign was that `get_live_cell` returned "unknown" for every cell I'd just deployed. The genesis transaction hash in my notes was wrong — `0x355a0c3a…` instead of the actual `0x1bb87da3…`. Every outpoint I referenced pointed at a cell that didn't exist in the real chain.
+CCC signing only worked reliably after calling `prepareTransaction()` before signing. Without that step, the secp256k1 witness placeholder was missing, so the lock script verified a different sighash.
 
-Once I had the right genesis hash, I hit signing errors. The private key for account #2 had a typo in my local notes. `offckb accounts` gave me the correct hex — `0x59ddda57ba06…` — but every signature still failed with error -31.
+I also learned not to trust old devnet notes. Restarting `offckb node` creates a fresh genesis, which means old outpoints are dead. Several confusing `Unknown OutPoint` errors were just stale cells from an earlier chain.
 
-The third bug was the subtle one. CCC's `signOnlyTransaction` computes the sighash over whatever witnesses are currently in the transaction. Without calling `prepareTransaction` first to inject a 65-byte zeroed witness placeholder, it hashes an empty witness array, producing a completely different sighash than what the lock script recomputes at verification time. The fix was one line: call `prepareTransaction` before `signOnlyTransaction`.
+## The Wrong Shortcut
 
-## The Wrong Contract
+To keep testing, I created token-like cells using `always_success.elf` as a stand-in type script. That helped confirm local cell creation and type-hash differences, but it was not a real token path.
 
-With signing working, I pointed the pool type script at `amm_pool_swap.elf` — the version that only contains the swap action. The transaction failed with `EntryWitnessAbiInvalid` (error 25). This error comes from CellScript's witness dispatch: on creation, there's no typed input cell, so it runs whichever action is listed first in the contract. For `amm_pool_swap.elf`, that's `swap_a_for_b`, which immediately fails because there's no `pool_before` input to read.
+Those cells do not enforce `token.elf` rules. They were useful test fixtures, not a valid foundation for claiming the AMM works.
 
-The fix was obvious in retrospect: use `amm_pool.elf` (which lists `seed_pool` first) as the pool type script, not the swap-only variant.
+## The Real Blocker
 
-## What's Left
+The blocker is `token.cell`.
 
-Contracts are deployed. Signing works. I know which ELF to use. But I haven't created the actual Token cells yet — those need `token.elf` as their type script with 16-byte molecule data (amount + symbol), and they need different type script args so `seed_pool`'s `type_hash() != type_hash()` check passes. Once those exist, `seed_pool` can create the AMM pool cell, and the full swap pipeline can run end-to-end.
+The first action is `mint`, and it requires an existing `MintAuthority` input:
 
-The swap builder itself is written (Rust, in `swap-builder/`), but it still works with mock data. Wiring it to live cells is the next session's job.
+```txt
+mint(auth_before: MintAuthority, to: Address, amount: u64)
+```
+
+But I could not find where the first `MintAuthority` cell is supposed to come from. No action in `token.cell` creates it.
+
+That means the honest flow is blocked here:
+
+```txt
+MintAuthority bootstrap -> mint token cells -> seed_pool -> swap_a_for_b
+```
+
+Until I understand the bootstrap step, I cannot honestly create real `token.elf` token cells, run `seed_pool`, or run `swap_a_for_b`.
+
+## Cleaning The Repo
+
+Before posting the repo publicly, I cleaned it up to remove assumptions.
+
+I removed fake ProofPlan integration files, deleted an old `swap_output.json` with bad witness bytes, fixed my Molecule `WitnessArgs` offset encoding, and rewrote the README so it presents the project as a builder friction report instead of a finished swap builder.
+
+The Rust builder now clearly says what it is: a partial builder that encodes swap math, token data, pool data, and transaction shape. It has not produced a CKB-accepted AMM transaction yet.
+
+## Takeaway
+
+This week taught me that getting close to a real CKB app means respecting the cell lifecycle completely. It is not enough to produce bytes that look right. The inputs, type scripts, witnesses, cell deps, and bootstrap cells all need to match the protocol's actual state transition.
+
+The next step is to ask the CellScript team how `token.cell` expects the genesis `MintAuthority` cell to be created. After that, the path is clear: mint real tokens, seed the pool, then attempt the first real swap.
