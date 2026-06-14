@@ -50,13 +50,7 @@ MintAuthority bootstrap -> mint token cells -> seed_pool -> swap_a_for_b
 
 Until I understand the bootstrap step, I cannot honestly create real `token.elf` token cells, run `seed_pool`, or run `swap_a_for_b`.
 
-## Cleaning The Repo
 
-Before posting the repo publicly, I cleaned it up to remove assumptions.
-
-I removed fake ProofPlan integration files, deleted an old `swap_output.json` with bad witness bytes, fixed my Molecule `WitnessArgs` offset encoding, and rewrote the README so it presents the project as a builder friction report instead of a finished swap builder.
-
-The Rust builder now clearly says what it is: a partial builder that encodes swap math, token data, pool data, and transaction shape. It has not produced a CKB-accepted AMM transaction yet.
 
 ## Takeaway
 
