@@ -13,11 +13,11 @@ resource Token has store, create, consume, replace, burn, relock {
 }
 ```
 
-A resource has a **type_hash** — a globally unique hash of its schema. The runtime uses type hashes to match cells across a transaction.
+A resource has a **type_hash**, which is a globally unique hash of its schema. The runtime uses type hashes to match cells across a transaction.
 
 ## Actions, Not Functions
 
-Instead of calling contract methods, CellScript defines **actions** — state transitions that declare what cells they consume and create:
+Instead of calling contract methods, CellScript defines **actions**, which are state transitions that declare what cells they consume and create:
 
 ```
 action swap_a_for_b(pool_before: Pool, input: Token, min_output: u64, to: Address)
@@ -48,30 +48,39 @@ In practice, a "shared cell" is just a cell with a type script. Anyone can spend
 
 ## Action Dispatch
 
-CellScript follows a fixed dispatch rule:
+For reusable builders, compile each action as an explicit scoped artifact with
+`--entry-action`. Do not rely on source order or fixture dispatch behavior as the
+protocol boundary.
 
-- **Creation:** If no input cell has this type script, run the **first action** in the ELF.
-- **Mutation:** If an input cell has this type script, read the witness to determine the action.
-
-This means the order of actions in the source file matters. `seed_pool` must be first (for creation), then `swap_a_for_b`, `add_liquidity`, etc.
+The transaction should bind to the intended artifact, CellDep, and script
+identity. The builder should use compiler outputs as the contract with the
+script, not hand-copied harness assumptions.
 
 ## Action Witness Encoding
 
-The action witness goes in `WitnessArgs.input_type`, not `lock`. The format:
+Generate action witness bytes with `cellc entry-witness`. The format starts with:
 
 ```
 CSARGv1\0 (8 bytes) + action-specific-params
 ```
 
-For `swap_a_for_b`: `CSARGv1\0 + min_output(u64 LE) + recipient(32 bytes)` = 48 bytes.
+Do not wrap these bytes in `WitnessArgs.input_type` by default. The generated
+CellScript entry wrapper reads the raw entry-witness payload from the current
+script group's witness surface. Script-group index `0` is group-relative, not
+necessarily transaction-global `witnesses[0]`.
+
+Use `WitnessArgs.input_type` or `WitnessArgs.output_type` only when the
+CellScript source explicitly reads those witness surfaces.
 
 ## ProofPlan Metadata
 
 Every compiled ELF includes a `proof_plan` array in its `.meta.json`. Each entry has:
 
-- `trigger` — when does this rule apply?
-- `scope` — what cells does it check?
-- `reads` — what data does it access?
-- `builder_assumptions` — what must the builder guarantee?
+- `trigger`: when does this rule apply?
+- `scope`: what cells does it check?
+- `reads`: what data does it access?
+- `builder_assumptions`: what must the builder guarantee?
 
-The builder should validate all `builder_assumptions` before constructing the transaction, making it a **ProofPlan-validating builder**.
+The builder should validate all `builder_assumptions` before constructing the
+transaction. Use `cellc explain-assumptions`, `cellc solve-tx`, and
+`cellc validate-tx` as the source of truth for the expected evidence shape.

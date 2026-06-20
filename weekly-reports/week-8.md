@@ -41,6 +41,11 @@ But this is still not a production AMM. It is a fixture-style transaction that p
 
 The next boundary is builder validation. CKB accepted the transaction, but `cellc validate-tx` still fails because the transaction JSON is missing `builder_assumption_evidence` for capacity policy.
 
+Arthur clarified one important correction after this: `cellc entry-witness`
+emits raw CellScript entry bytes, and those bytes should not be wrapped in
+`WitnessArgs.input_type` by default. Witness index `0` is script-group-relative,
+not necessarily transaction-global `witnesses[0]`.
+
 ## Takeaway
 
 The project moved from being blocked on protocol bootstrapping to being blocked on builder completeness.

@@ -50,4 +50,17 @@ So there are two levels now:
 
 ## Next
 
-Ask Arthur about the exact `builder_assumption_evidence` shape and whether external builder fixtures should keep using simple resource type scripts or move to scoped CellScript artifacts for each resource.
+The next implementation step is to stop treating the acceptance harness fixture
+pattern as the reusable protocol. The builder should make the artifact, CellDep,
+script identity, entry witness, and assumption evidence explicit.
+
+Arthur's guidance is to use compiler outputs as the builder contract:
+
+- `cellc abi`
+- `cellc constraints`
+- `cellc entry-witness --json`
+- `cellc explain-assumptions --json`
+- `cellc validate-tx --json`
+
+That keeps the project useful as an external builder instead of just a devnet
+workaround.
