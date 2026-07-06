@@ -99,12 +99,4 @@ state, channel state, payment status, and devnet validation. That is enough for 
 focused hackathon demo, as long as the scope is narrow and the prototype does not
 pretend Fiber has features that are not exposed yet.
 
-## Next
 
-Next I want to turn the research into a runnable devnet workflow:
-
-1. Set up the Fiber node environment cleanly.
-2. Verify invoice creation and payment status polling.
-3. Verify channel opening and channel state transitions.
-4. Write a small service that coordinates the flow through Fiber RPC.
-5. Keep the public writeup focused on infrastructure learning until the hackathon submission is ready.
