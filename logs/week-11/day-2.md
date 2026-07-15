@@ -59,6 +59,14 @@ COMPLETED        | Fiber invoice settled
 This is useful because Fiber operations are asynchronous. The user-facing flow
 needs visible state, not just a final success/failure boolean.
 
+The clean-state proof starts with the recipient node reporting no open channels:
+
+![Recipient Zero-Channel Proof](screenshots/recipient-zero-channel-proof.png)
+
+The LSP daemon then exposes the local JSON-RPC API that drives the order flow:
+
+![LSP Daemon API Listening](screenshots/lspd-api-listening.png)
+
 ## Result
 
 The daemon could create an order, observe a held sender payment, open a recipient

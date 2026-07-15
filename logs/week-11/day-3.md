@@ -59,6 +59,10 @@ Added a small browser dashboard to make the lifecycle visible:
 The UI is intentionally local and lightweight. It is a dashboard for proving the
 infrastructure flow, not a full wallet.
 
+Before the payment, the dashboard shows the recipient-side channel fields empty:
+
+![Demo UI Before Payment](screenshots/demo-ui-before-payment.png)
+
 ## Verified Result
 
 The verified success condition became:
@@ -71,6 +75,17 @@ recipient local_balance increased by net amount
 recipient channel is_acceptor: true
 recipient channel is_one_way: true
 ```
+
+The completed UI view shows the receive-first payment result: the recipient starts
+with no channel and ends with non-zero local balance after the LSP provisions the
+channel and pays the recipient.
+
+![First Receive Completed](screenshots/demo-ui-first-receive-completed.png)
+
+The lower audit view captures the state machine finishing at `COMPLETED` and the
+recipient channel exposing a funding outpoint.
+
+![Audit Trail and Channel Outpoint](screenshots/demo-ui-audit-and-outpoint.png)
 
 ## Next
 

@@ -49,6 +49,11 @@ Added:
 - `scripts/codespaces-demo-start.sh`;
 - `scripts/codespaces-demo-pay.sh`.
 
+The Codespaces setup starts the live testnet stack from the repository and keeps
+the Fiber RPC ports local while exposing the browser demo UI.
+
+![Codespaces Demo Startup](screenshots/codespaces-demo-startup.png)
+
 ## Documentation Cleanup
 
 Cleaned the public project docs so they read as project documentation rather than

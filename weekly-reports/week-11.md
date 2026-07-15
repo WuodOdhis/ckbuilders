@@ -113,6 +113,18 @@ that outpoint are the CKB funding transaction hash, which proves the channel was
 funded on-chain. The payment itself is off-chain Fiber state, so its proof comes
 from `get_payment`, `get_order_status`, and the recipient channel balance.
 
+## Demo Evidence
+
+The screenshots below capture the final demo path and the main proof points:
+
+- [Demo Runbook Checklist](../logs/week-11/screenshots/demo-runbook-checklist.png)
+- [Recipient Zero-Channel Proof](../logs/week-11/screenshots/recipient-zero-channel-proof.png)
+- [LSP Daemon API Listening](../logs/week-11/screenshots/lspd-api-listening.png)
+- [Demo UI Before Payment](../logs/week-11/screenshots/demo-ui-before-payment.png)
+- [First Receive Completed](../logs/week-11/screenshots/demo-ui-first-receive-completed.png)
+- [Audit Trail and Channel Outpoint](../logs/week-11/screenshots/demo-ui-audit-and-outpoint.png)
+- [Codespaces Demo Startup](../logs/week-11/screenshots/codespaces-demo-startup.png)
+
 ## Documentation and Demo Environment
 
 I added public documentation for the project:

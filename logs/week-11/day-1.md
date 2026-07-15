@@ -44,6 +44,11 @@ The initial daemon API is small:
 - `buy`;
 - `get_order_status`.
 
+The demo was organized around a short checklist so the proof could show terminal
+state and UI state separately:
+
+![Demo Runbook Checklist](screenshots/demo-runbook-checklist.png)
+
 ## Implementation Start
 
 Started the Rust `lspd` crate and added the first Fiber RPC client methods:
