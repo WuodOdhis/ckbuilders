@@ -2,7 +2,7 @@
 title: "Reflections of a CKBuilder: Bitcoin Doesn't Know It Has Smart Contracts"
 coverImage: 'images/cover.png'
 category: Interoperability
-subtitle: 'Part 3 of Reflections of a CKBuilder: how RGB++ gives Bitcoin programmability it was never designed to have - without asking Bitcoin's permission.'
+subtitle: "Part 3 of Reflections of a CKBuilder: how RGB++ gives Bitcoin programmability it was never designed to have - without asking Bitcoin's permission."
 date: '2026-07-25T00:00:00.000Z'
 author:
 - github:WuodOdhis
