@@ -6,7 +6,7 @@ This week, my focus shifted heavily toward research and education, specifically 
 
 ## Studying RGB++ Mechanics
 
-The first part of the week was spent breaking down how RGB++ actually works under the hood. The core concept I focused on was **isomorphic binding** — the mechanism that maps Bitcoin UTXOs to CKB cells. 
+The first part of the week was spent breaking down how RGB++ actually works under the hood. The core concept I focused on was **isomorphic binding** - the mechanism that maps Bitcoin UTXOs to CKB cells. 
 
 It took some time to wrap my head around how CKB uses its built-in Bitcoin light client to verify Bitcoin state transitions natively, acting as an execution layer for Bitcoin assets. Understanding how the `OP_RETURN` commitment serves as the cryptographic anchor was a major breakthrough in my mental model of the protocol.
 
