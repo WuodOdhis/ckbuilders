@@ -44,13 +44,6 @@ An agent buys access to a service, but the entitlement lives only in that provid
 **3. Buying services across Lightning and Fiber.**
 A buyer holds BTC on Lightning while a service accepts a CKB asset through Fiber. The candidate is an application flow that quotes, converts through existing CCH tooling, purchases, and recovers interrupted orders. This matches the map's LFB area (Lightning and Fiber bridging), also a frontier hypothesis. Existing pieces include AgentPay's proposed flow and the CCH Daily Smoke automated tests. The gap is a real service and an independent buyer, not another bridge wrapper.
 
-## Current Status
-
-- Opportunity map studied; its eight areas and four positions are summarised above.
-- Existing ecosystem inventory verified against dated sources: hackathon results, the Spark Program decision, FNN releases, and the community projects each source names.
-- Earlier grant failures diagnosed: insufficient research before application.
-- Three candidate directions identified and tied to the map's areas. None is settled yet. The comparative gap analysis is in progress, not complete.
-
 ## Next
 
 - Read back through my own CKB material in this repo (`concepts/`, earlier logs) to firm up the foundations the map assumes: the cell model, script lifecycle, and Fiber channel primitives.
