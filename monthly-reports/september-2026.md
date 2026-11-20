@@ -1,7 +1,7 @@
 # September 2026: Researching AI Agents on CKB
 
 **Dates:** September 2026
-**Report written:** October 14, 2026
+**Report written:** November 20, 2026
 
 September was a research month, not a build month. My instructor shared the ecosystem's opportunity map, *"AI, machine payments, and Fiber in 2026: an opportunity map for CKB and Fiber developers"*, as the starting brief for my research into how AI agents can integrate with CKB. I spent the month studying that document and the work it points to. I did not submit a grant, and I did not settle on one idea. That was on purpose.
 
